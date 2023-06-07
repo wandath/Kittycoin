@@ -1,7 +1,3 @@
-.container {
-  padding: 0 2rem;
-}
-
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -45,4 +41,31 @@
 
 .card input {
   margin: 0.5rem;
+}
+
+.buyKCN {
+  background-color: #e4a1d7;
+  font-size: x-large;
+  margin: 1;
+  padding: 1;
+}
+
+.buyKCN:hover {
+  background-color: #e2bddb;
+}
+
+@keyframes boomerang {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+
+.image {
+  animation: boomerang 2s infinite ease-out;
 }
