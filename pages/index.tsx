@@ -40,7 +40,7 @@ const Home: NextPage = () => {
  
  useEffect(() => {
  if (provider && account) {
- provider.getBalance(account).then((balance) => {
+ provider.getBalance(account).then((balance: ethers.BigNumberish) => {
  setBalance(ethers.utils.formatEther(balance));
  });
  }
@@ -60,7 +60,6 @@ const Home: NextPage = () => {
  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     
-    // Récupérez les champs de saisie à partir de l'objet form
     const form = event.target as HTMLFormElement;
     const toAddress = form.elements.namedItem("to") as HTMLInputElement;
     const amountToSend = form.elements.namedItem("amount") as HTMLInputElement;
@@ -82,7 +81,7 @@ const Home: NextPage = () => {
   const handleBuyKittycoin = async () => {
     if (kittycoin && signer) {
       const kittycoinWithSigner = kittycoin.connect(signer);
-      const amount = ethers.utils.parseEther("1"); // Montant fixe d'ETH à échanger contre des Kittycoin, vous pouvez le modifier selon vos besoins
+      const amount = ethers.utils.parseEther("1"); // Montant fixe d'ETH à échanger contre des Kittycoin
       const ownerAddress = await kittycoinWithSigner.owner();
   
       try {
