@@ -93,19 +93,19 @@ const Home: NextPage = () => {
       try {
         const tx = await kittycoinWithSigner.buy({value: ethers.BigNumber.from("200000000000000000")});
         await tx.wait();
-        alert("Purchase successful!");
+        alert("Purchase successful! Enjoy your Kittycoins!");
   
-        // const updatedBalanceKCN = ethers.utils.formatEther(
-        //   await kittycoinWithSigner.balanceOf(account)
-        // );
-        // const updatedBalanceETH = ethers.utils.formatEther(
-        //   await provider.getBalance(account)
-        // );
-        // setBalanceKCN(updatedBalanceKCN);
-        // setBalance(updatedBalanceETH);
+        const updatedBalanceKCN = ethers.utils.formatEther(
+          await kittycoinWithSigner.balanceOf(account)
+        );
+        const updatedBalanceETH = ethers.utils.formatEther(
+          await provider.getBalance(account)
+        );
+        setBalanceKCN(updatedBalanceKCN);
+        setBalance(updatedBalanceETH);
       } catch (error) {
         console.error(error);
-        alert("Purchase failed! zd");
+        alert("Purchase failed! Try again");
       }
     }
   };  
