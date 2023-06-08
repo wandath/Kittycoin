@@ -134,7 +134,7 @@ const Home: NextPage = () => {
       </p>
     </Card>
     <Image className={styles.image} src="https://www.svgrepo.com/show/443128/brand-hello-kitty.svg" alt="Hello Kitty" width={500} height={300} />
-    <button className={styles.buyKCN} onClick={handleBuyKittycoin}>
+    <button className={styles.button} onClick={handleBuyKittycoin}>
       Buy Kittycoin
       <Image className={styles.icon} src="https://www.svgrepo.com/show/443128/brand-hello-kitty.svg" alt="Hello Kitty icon" width={24} height={24} />
     </button>
@@ -154,7 +154,7 @@ const Home: NextPage = () => {
         <label htmlFor="amount">Amount</label>
         <input name="amount" type="number" />
         
-        <button type="submit">Send</button>
+        <button className={styles.button} type="submit">Send</button>
       </form>
     </Card>
  </main>
