@@ -7,6 +7,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
  
 import styles from "../styles/Home.module.css";
 import Kittycoin from "../contract/kittycoin.json";
+import KittycoinBuy from "../contract/kittycoinbuy.json";
 import { Card } from "@mui/material";
 import Image from "next/image";
  
@@ -16,9 +17,11 @@ const Home: NextPage = () => {
  const [balance, setBalance] = useState<string>("0");
  const [account, setAccount] = useState<string | null>(null);
  const [kittycoin, setKittycoin] = useState<any>(null);
+ const [kittycoinBuy, setKittycoinBuy] = useState<any>(null);
  const [balanceKCN, setBalanceKCN] = useState<string>("0");
  
  const kittycoinAddress = "0xe862e1A6Dd754BB6dB8737849E0c84FAdb87D839";
+ const kittycoinAddressBuy = "0x5Ad979410aB9Ee4eFf2FccaBA81577F85f0aD647";
  
  useEffect(() => {
   if (window.ethereum) {
@@ -50,6 +53,9 @@ const Home: NextPage = () => {
   if (provider && account) {
     const contract = new ethers.Contract(kittycoinAddress, Kittycoin, provider);
     setKittycoin(contract);
+
+    const contractBuy = new ethers.Contract(kittycoinAddressBuy, KittycoinBuy, provider);
+    setKittycoinBuy(contractBuy);
     
     contract.balanceOf(account).then((balance: ethers.BigNumber) => {
     setBalanceKCN(ethers.utils.formatEther(balance));
@@ -80,26 +86,26 @@ const Home: NextPage = () => {
 
   const handleBuyKittycoin = async () => {
     if (kittycoin && signer) {
-      const kittycoinWithSigner = kittycoin.connect(signer);
+      const kittycoinWithSigner = kittycoinBuy.connect(signer);
       const amount = ethers.utils.parseEther("1"); // Montant fixe d'ETH à échanger contre des Kittycoin
       const ownerAddress = await kittycoinWithSigner.owner();
   
       try {
-        const tx = await kittycoinWithSigner.transfer(ownerAddress, amount);
+        const tx = await kittycoinWithSigner.buy({value: ethers.BigNumber.from(100000000000000000)});
         await tx.wait();
         alert("Purchase successful!");
   
-        const updatedBalanceKCN = ethers.utils.formatEther(
-          await kittycoinWithSigner.balanceOf(account)
-        );
-        const updatedBalanceETH = ethers.utils.formatEther(
-          await provider.getBalance(account)
-        );
-        setBalanceKCN(updatedBalanceKCN);
-        setBalance(updatedBalanceETH);
+        // const updatedBalanceKCN = ethers.utils.formatEther(
+        //   await kittycoinWithSigner.balanceOf(account)
+        // );
+        // const updatedBalanceETH = ethers.utils.formatEther(
+        //   await provider.getBalance(account)
+        // );
+        // setBalanceKCN(updatedBalanceKCN);
+        // setBalance(updatedBalanceETH);
       } catch (error) {
         console.error(error);
-        alert("Purchase failed!");
+        alert("Purchase failed! zd");
       }
     }
   };  
