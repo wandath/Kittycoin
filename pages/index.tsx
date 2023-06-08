@@ -116,7 +116,7 @@ const Home: NextPage = () => {
   </Head>
  
  <main className={styles.main}>
-    <img className={styles.image} src="http://thecraftchop.com/files/images/hellokittyflower.svg" alt="Hello Kitty" width={500} height={300} />
+    <img className={styles.image} src="https://www.svgrepo.com/show/443128/brand-hello-kitty.svg" alt="Hello Kitty" width={500} height={300} />
     <Card className={styles.card}>
       <button className={styles.buyKCN} onClick={handleBuyKittycoin}>
         Buy Kittycoin
