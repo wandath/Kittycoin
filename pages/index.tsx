@@ -21,40 +21,40 @@ const Home: NextPage = () => {
  const kittycoinAddress = "0xe862e1A6Dd754BB6dB8737849E0c84FAdb87D839";
  
  useEffect(() => {
- if (window.ethereum) {
- console.log("MetaMask is installed!");
- const provider = new ethers.providers.Web3Provider(window.ethereum);
- setProvider(provider);
- const signer = provider.getSigner();
- setSigner(signer);
- } else {
- console.log("Please install MetaMask!");
- }
+  if (window.ethereum) {
+    console.log("MetaMask is installed!");
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    setProvider(provider);
+    const signer = provider.getSigner();
+    setSigner(signer);
+  } else {
+    console.log("Please install MetaMask!");
+  }
  }, []);
  
  useEffect(() => {
- if (signer) {
- signer.getAddress().then((address: string) => setAccount(address));
- }
+  if (signer) {
+    signer.getAddress().then((address: string) => setAccount(address));
+  }
  }, [signer]);
  
  useEffect(() => {
- if (provider && account) {
- provider.getBalance(account).then((balance: ethers.BigNumberish) => {
- setBalance(ethers.utils.formatEther(balance));
- });
- }
+  if (provider && account) {
+    provider.getBalance(account).then((balance: ethers.BigNumberish) => {
+    setBalance(ethers.utils.formatEther(balance));
+    });
+  }
  }, [provider, account]);
  
  useEffect(() => {
- if (provider && account) {
- const contract = new ethers.Contract(kittycoinAddress, Kittycoin, provider);
- setKittycoin(contract);
- 
- contract.balanceOf(account).then((balance: ethers.BigNumber) => {
- setBalanceKCN(ethers.utils.formatEther(balance));
- });
- }
+  if (provider && account) {
+    const contract = new ethers.Contract(kittycoinAddress, Kittycoin, provider);
+    setKittycoin(contract);
+    
+    contract.balanceOf(account).then((balance: ethers.BigNumber) => {
+    setBalanceKCN(ethers.utils.formatEther(balance));
+    });
+  }
  }, [provider, account]);
 
  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
