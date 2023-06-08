@@ -142,7 +142,7 @@ const Home: NextPage = () => {
       <h2>Kitty Coin</h2>
       <ConnectButton /> 
       <p>Address: {account}</p>
-      <p>Amount: {balance}</p>
+      <p>Balance Ethers: {balance} ETH</p>
       <p>Balance Kittycoin: {balanceKCN} KCN</p>
     </Card>
     <Card className={styles.card}>
