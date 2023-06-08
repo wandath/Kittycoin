@@ -44,10 +44,11 @@
 }
 
 .buyKCN {
-  background-color: #e4a1d7;
+  background-color: #eddce9;
   font-size: x-large;
   margin: 1;
   padding: 1;
+  border-radius: 4px;
 }
 
 .buyKCN:hover {

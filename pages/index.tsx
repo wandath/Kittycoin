@@ -116,21 +116,38 @@ const Home: NextPage = () => {
   </Head>
  
  <main className={styles.main}>
-    <img className={styles.image} src="https://www.svgrepo.com/show/443128/brand-hello-kitty.svg" alt="Hello Kitty" width={500} height={300} />
     <Card className={styles.card}>
-      <button className={styles.buyKCN} onClick={handleBuyKittycoin}>
-        Buy Kittycoin
-        <Image className={styles.icon} src="https://www.svgrepo.com/show/443128/brand-hello-kitty.svg" alt="Hello Kitty icon" width={24} height={24} />
-        </button>
+      <p>
+      Kitty Coin is an emerging meme coin that has gained popularity in the crypto space. Embracing the power of internet memes, Kitty Coin brings a playful and humorous twist to the world of cryptocurrencies.
+      </p>
+      <p>
+      As a meme coin, Kitty Coin's primary utility lies in its ability to engage and entertain the community. It serves as a creative outlet for meme enthusiasts, providing a platform to share jokes, memes, and humorous content related to the cryptocurrency ecosystem.
+      </p>
+      <p>
+      Beyond its entertainment value, Kitty Coin also fosters a sense of community and camaraderie among its holders. Being part of the Kitty Coin community allows individuals to connect with like-minded meme enthusiasts, share experiences, and participate in various community-driven initiatives.
+      </p>
+      <p>
+      While meme coins like Kitty Coin may not have traditional use cases or solve specific problems, their value lies in their ability to bring joy, laughter, and a sense of belonging to the crypto community. They serve as a lighthearted and fun expression of the evolving digital landscape.
+      </p>
+      <p>
+      It's important to note that meme coins, including Kitty Coin, are highly speculative and can be subject to significant price volatility. Therefore, it's essential to approach them with caution and conduct thorough research before engaging with them.
+      </p>
     </Card>
+    <img className={styles.image} src="https://www.svgrepo.com/show/443128/brand-hello-kitty.svg" alt="Hello Kitty" width={500} height={300} />
+    <button className={styles.buyKCN} onClick={handleBuyKittycoin}>
+      Buy Kittycoin
+      <Image className={styles.icon} src="https://www.svgrepo.com/show/443128/brand-hello-kitty.svg" alt="Hello Kitty icon" width={24} height={24} />
+    </button>
     <Card className={styles.card}>
       <h2>Kitty Coin</h2>
       <ConnectButton /> 
       <p>Address: {account}</p>
       <p>Amount: {balance}</p>
       <p>Balance Kittycoin: {balanceKCN} KCN</p>
-
-      <form onSubmit={onSubmit}>
+    </Card>
+    <Card className={styles.card}>
+      <h2>Send Kitty Coin !</h2>
+    <form onSubmit={onSubmit}>
         <label htmlFor="to">Recipient</label>
         <input name="to" type="text" />
         
