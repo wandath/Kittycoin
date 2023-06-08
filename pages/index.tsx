@@ -58,7 +58,7 @@ const Home: NextPage = () => {
     setKittycoinBuy(contractBuy);
     
     contract.balanceOf(account).then((balance: ethers.BigNumber) => {
-    setBalanceKCN(ethers.utils.formatEther(balance));
+    setBalanceKCN(balance.toString());
     });
   }
  }, [provider, account]);
@@ -91,7 +91,7 @@ const Home: NextPage = () => {
       const ownerAddress = await kittycoinWithSigner.owner();
   
       try {
-        const tx = await kittycoinWithSigner.buy({value: ethers.BigNumber.from(100000000000000000)});
+        const tx = await kittycoinWithSigner.buy({value: ethers.BigNumber.from("200000000000000000")});
         await tx.wait();
         alert("Purchase successful!");
   
@@ -144,6 +144,7 @@ const Home: NextPage = () => {
           Buy Kittycoin
           <Image className={styles.icon} src="https://www.svgrepo.com/show/443128/brand-hello-kitty.svg" alt="Hello Kitty icon" width={24} height={24} />
         </button>
+        <p>Buy 0.00000000000000002 KCN for 0.2 ETH</p>
         <Card className={styles.card}>
           <h2>Kitty Coin</h2>
           <ConnectButton /> 
